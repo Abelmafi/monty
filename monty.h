@@ -70,6 +70,8 @@ extern stack_t *add_node(stack_t **head, int num);
 void f_error(char *argv);
 void u_error(void);
 
+size_t _print(const stack_t *head);
+
 extern void pall(stack_t **head, unsigned int l_count);
 extern void pint(stack_t **head, unsigned int l_count);
 extern void push(stack_t **head, unsigned int l_count);
