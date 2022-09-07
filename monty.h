@@ -33,7 +33,14 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+
+void read_line(FILE *fh_output, stack_t **head);
 char **parse_lines(char *line);
+void pint(stack_t **head, unsigned int n);
+void read_line(FILE *fh_output, stack_t **head);
 void pall(stack_t **head, unsigned int line_number);
 void push(stack_t **head, unsigned int line_number);
+void read_line(FILE *fh_output, stack_t **head);
+
 #endif
