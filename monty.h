@@ -17,7 +17,7 @@
 		{		\
 			NULL, NULL	\
 		}	\
-	}	
+	}
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -29,9 +29,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -44,10 +44,16 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct data - linked list node value handler.
+ * @c: linked list data.
+ *
+ * Discription: stare data from file args opcode.
+ */
 typedef struct data
 {
 	char *c;
@@ -62,10 +68,11 @@ char **parse_lines(char *line);
 void f_error(char *argv);
 void u_error(void);
 
+void pall(stack_t **head, unsigned int l_count);
 void pint(stack_t **head, unsigned int l_count);
 void push(stack_t **head, unsigned int l_count);
 void pall(stack_t **head, unsigned int l_count);
 void pop(stack_t **head, unsigned int l_count);
 void swap(stack_t **head, unsigned int l_count);
-void _add(stack_t **head, unsigned int l_count)
+void _add(stack_t **head, unsigned int l_count);
 #endif
