@@ -20,4 +20,6 @@ void exec_line(stack_t **head, char **args, unsigned int l_count)
 			return;
 		}
 	}
+	fprintf(stderr, "L%d: unknown instruction %s\n", l_count, args[0]);
+	exit(EXIT_FAILURE);
 }

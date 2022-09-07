@@ -16,12 +16,12 @@ char **parse_lines(char *line)
 		fprintf(stderr, "lsh:kjljldkjljds\n");
 		exit(EXIT_FAILURE);
 	}
-	token = strtok(line, " \n");
+	token = strtok(line, " \t\n");
 	while (token != NULL)
 	{
 		tokens[position] = token;
 		position++;
-		token = strtok(NULL, " ");
+		token = strtok(NULL, " \t\n");
 	}
 	tokens[position] = NULL;
 	return (tokens);
