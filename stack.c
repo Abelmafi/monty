@@ -1,10 +1,10 @@
 #include "monty.h"
 /**
+ * push - push int of data into the stack
+ * @head: linked list head pointer.
+ * @l_count: line count.
  *
- *
- *
- *
- *
+ * Return: alwaya none.
  */
 void push(stack_t **head, unsigned int l_count)
 {

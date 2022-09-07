@@ -1,10 +1,9 @@
 #include "monty.h"
 /**
+ * parse_lines - split lines into diffrent strings.
+ * @line: line to be slited.
  *
- *
- *
- *
- *
+ * Return: splited string pointer.
  */
 char **parse_lines(char *line)
 {

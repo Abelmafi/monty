@@ -13,7 +13,7 @@
 		{"pint", pint},	\
 		{"pop", pop},	\
 		{"swap", swap},	\
-		{"add", add},	\
+		{"add", _add},	\
 		{		\
 			NULL, NULL	\
 		}	\
@@ -57,6 +57,15 @@ data_s global;
 
 void exec_line(stack_t **head, char **args, unsigned int l_count);
 void read_line(FILE *fh_output, stack_t **head);
+char **parse_lines(char *line);
+
+void f_error(char *argv);
+void u_error(void);
+
+void pint(stack_t **head, unsigned int l_count);
 void push(stack_t **head, unsigned int l_count);
 void pall(stack_t **head, unsigned int l_count);
+void pop(stack_t **head, unsigned int l_count);
+void swap(stack_t **head, unsigned int l_count);
+void _add(stack_t **head, unsigned int l_count)
 #endif
