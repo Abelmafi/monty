@@ -22,5 +22,6 @@ int main(int argc, char **argv)
 	read_line(fh_output, &head);
 
 	fclose(fh_output);
+	free_stack(head);
 	exit(EXIT_SUCCESS);
 }
