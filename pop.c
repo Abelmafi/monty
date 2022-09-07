@@ -1,4 +1,4 @@
-#include "monyt.h"
+#include "monty.h"
 /**
  * pop - removes the top element of the stack.
  * @head: stack head pointer.

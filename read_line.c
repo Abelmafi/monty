@@ -1,3 +1,4 @@
+#define  _GNU_SOURCE
 #include "monty.h"
 /**
  * read_line - read line from file
@@ -15,8 +16,6 @@ void read_line(FILE *fh_output, stack_t **head)
 
 	while (getline(&line, &bufsize, fh_output) != -1)
 	{
-		if (status)
-			break;
 		if (*line == '\n')
 		{
 			l_count++;
@@ -24,7 +23,7 @@ void read_line(FILE *fh_output, stack_t **head)
 		}
 		args = parse_lines(line);
 		global.c = args[1];
-		if (!args || args[0] == "#")
+		if (!args)
 		{
 			l_count++;
 			continue;

@@ -6,7 +6,7 @@
  *
  * Return: alwaya none.
  */
-void push(stack_t **head, unsigned int l_count)
+void push(stack_t **head, unsigned int l_count __attribute__((unused)))
 {
 	stack_t *new;
 	int num;
