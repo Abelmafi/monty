@@ -65,14 +65,16 @@ void exec_line(stack_t **head, char **args, unsigned int l_count);
 void read_line(FILE *fh_output, stack_t **head);
 char **parse_lines(char *line);
 
+extern int add_node(stack_t **head, int num);
+
 void f_error(char *argv);
 void u_error(void);
 
-void pall(stack_t **head, unsigned int l_count);
-void pint(stack_t **head, unsigned int l_count);
-void push(stack_t **head, unsigned int l_count);
-void pall(stack_t **head, unsigned int l_count);
-void pop(stack_t **head, unsigned int l_count);
-void swap(stack_t **head, unsigned int l_count);
-void _add(stack_t **head, unsigned int l_count);
+extern void pall(stack_t **head, unsigned int l_count);
+extern void pint(stack_t **head, unsigned int l_count);
+extern void push(stack_t **head, unsigned int l_count);
+extern void pall(stack_t **head, unsigned int l_count);
+extern void pop(stack_t **head, unsigned int l_count);
+extern void swap(stack_t **head, unsigned int l_count);
+extern void _add(stack_t **head, unsigned int l_count);
 #endif
