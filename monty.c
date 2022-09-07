@@ -1,3 +1,4 @@
+#define  _GNU_SOURCE
 #include "monty.h"
 /**
  *
@@ -44,6 +45,8 @@ void pint(stack_t **head, unsigned int no)
 void pop(stack_t **head, unsigned int no)
 {
 	stack_t *rmv;
+	(void)no;
+
 	if (*head == NULL)
 		fprintf(stderr, "kjhkjhk");
 	rmv = *head;
@@ -51,9 +54,16 @@ void pop(stack_t **head, unsigned int no)
 	rmv->next = NULL;
 	free(rmv);
 }
+/**
+ *
+ *
+ *
+ *
+ */
 void swap(stack_t **head, unsigned int no)
 {
 	stack_t *tmp, *current = *head;
+	(void)no;
 
 	if ((*head)->next == NULL)
 		fprintf(stderr, "hifjfj");
@@ -74,6 +84,7 @@ void swap(stack_t **head, unsigned int no)
 void add(stack_t **head, unsigned int no)
 {
 	stack_t *tmp = *head;
+	(void)no;
 
 	if ((*head)->next == NULL)
 		fprintf(stderr, "jljl");
@@ -86,16 +97,12 @@ void add(stack_t **head, unsigned int no)
  *
  *
  */
-int main(int argc, char **argv)
+void read_line(FILE *fh_output, stack_t **head)
 {
-	FILE *fh_output;
 	char *line = NULL;
-	ssize_t bufsize = 0;
+	size_t bufsize = 0;
 	char **args;
-	unsigned int num = 0, i;
-	stack_t *head = NULL;
-
-
+	unsigned int num, i;
 	instruction_t f_list[] = {
 		{"push", push},
 		{"pall", pall},
@@ -105,19 +112,34 @@ int main(int argc, char **argv)
 		{"add", add},
 		{NULL, NULL}
 	};
-	fh_output = fopen(argv[1], "r");
+
 	while (getline(&line, &bufsize, fh_output) != -1)
 	{
 		args = parse_lines(line);
+		(args[1] == NULL) ? args[1] = "0" : args[1];
 		for (i = 0; f_list[i].opcode != NULL; i++)
 		{
 			if (strcmp(args[0], f_list[i].opcode) == 0)
 			{
 				num = atoi(args[1]);
-				f_list[i].f(&head, num);
+				f_list[i].f(head, num);
 			}
 		}
 	}
+}
+
+int main(int argc, char **argv)
+{
+	FILE *fh_output;
+	stack_t *head = NULL;
+
+	(void)argc;
+	fh_output = fopen(argv[1], "r");
+	read_line(fh_output, &head);
+
 	fclose(fh_output);
 	return (0);
 }
+
+
+
