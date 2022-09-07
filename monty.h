@@ -61,9 +61,8 @@ typedef struct data
 
 data_s global;
 
-void exec_line(stack_t **head, char **args, unsigned int l_count);
+void exec_line(stack_t **head, char *args, unsigned int l_count);
 void read_line(FILE *fh_output, stack_t **head);
-char **parse_lines(char *line);
 
 extern int add_node(stack_t **head, int num);
 

@@ -11,7 +11,7 @@ void read_line(FILE *fh_output, stack_t **head)
 {
 	char *line = NULL;
 	size_t bufsize = 0;
-	char **args;
+	char *args;
 	unsigned int l_count = 0;
 
 	while (getline(&line, &bufsize, fh_output) != -1)
@@ -21,13 +21,13 @@ void read_line(FILE *fh_output, stack_t **head)
 			l_count++;
 			continue;
 		}
-		args = parse_lines(line);
-		global.c = args[1];
-		if (!args)
+		args = strtok(line, " \t\n");
+		if (!args || *args == '#')
 		{
 			l_count++;
 			continue;
 		}
+		global.c = strtok(NULL, " \t\n");
 		exec_line(head, args, l_count);
 		l_count++;
 	}
