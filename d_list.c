@@ -27,7 +27,7 @@ int add_node(stack_t **head, int num)
 }
 /**
  * free_stack - frees a dlistint_t linked list
- * @stack: list head
+ * @head: list head
  *
  * Return: void
  */
