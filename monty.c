@@ -1,21 +1,21 @@
 #define  _GNU_SOURCE
 #include "monty.h"
+int status = 0;
 /**
  *
  *
  *
  */
-void pall(stack_t **head, unsigned int no)
+/*void pall(stack_t **head, unsigned int l_count __attribute__((unused)))
 {
         stack_t *print = *head;
-        (void)no;
 
         while (print != NULL)
         {
                 printf("%d\n", print->n);
                 print = print->next;
         }
-}
+}*/
 /**
  *
  *
@@ -25,16 +25,13 @@ void pall(stack_t **head, unsigned int no)
  *
  */
 
-void pint(stack_t **head, unsigned int no)
+void pint(stack_t **head, unsigned int l_count)
 {
-	stack_t *top = *head;
-	(void)no;
-
-	if (*head == NULL)
+	if (!head || !(*head))
 	{
-		fprintf(stderr, "L<line_number>: can't pint, stack empty");
+		fprintf(stderr, "L%d: can't pint, stack empty\n", l_count);
 	}
-	printf("%d\n", top->n);
+	printf("%d\n", (*head)->n);
 }
 /**
  *
@@ -42,15 +39,20 @@ void pint(stack_t **head, unsigned int no)
  *
  *
  */
-void pop(stack_t **head, unsigned int no)
+void pop(stack_t **head, unsigned int l_count)
 {
 	stack_t *rmv;
-	(void)no;
 
-	if (*head == NULL)
-		fprintf(stderr, "kjhkjhk");
+	if (!head || !*head)
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack\n", l_count);
+		exit(EXIT_FAILURE);
+	}
 	rmv = *head;
 	*head = (*head)->next;
+	if (!*head)
+		return;
+	(*head)->prev = NULL;
 	rmv->next = NULL;
 	free(rmv);
 }
@@ -60,13 +62,15 @@ void pop(stack_t **head, unsigned int no)
  *
  *
  */
-void swap(stack_t **head, unsigned int no)
+void swap(stack_t **head, unsigned int l_count)
 {
-	stack_t *tmp, *current = *head;
-	(void)no;
+	stack_t *tmp = NULL, *current = *head;
 
-	if ((*head)->next == NULL)
-		fprintf(stderr, "hifjfj");
+	if (!head || !*head || !((*head)->next))
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", l_count);
+		exit(EXIT_FAILURE);
+	}
 	tmp = (*head)->next;
 	current->next = tmp->next;
 	current->prev = tmp;
@@ -81,65 +85,89 @@ void swap(stack_t **head, unsigned int no)
  *
  *
  */
-void add(stack_t **head, unsigned int no)
+void add(stack_t **head, unsigned int l_count)
 {
 	stack_t *tmp = *head;
-	(void)no;
 
-	if ((*head)->next == NULL)
-		fprintf(stderr, "jljl");
+	if (!head || !*head || !((*head)->next))
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n", l_count);
+		exit(EXIT_FAILURE);
+	}
 	*head = (*head)->next;
 	(*head)->n += tmp->n;
-	pop(&tmp, no);
+	pop(&tmp, l_count);
 }
+/*void exec_line(stack_t **head, char **args, unsigned int l_count)
+{
+	unsigned int i;
+	instruction_t f_list[] = INSTRUCTIONS;
+
+	for (i = 0; f_list[i].opcode != NULL; i++)
+	{
+		if (strcmp(args[0], f_list[i].opcode) == 0)
+		{
+			f_list[i].f(head, l_count);
+			return;
+		}
+	}
+}*/
 /**
  *
  *
  *
  */
-void read_line(FILE *fh_output, stack_t **head)
+/*void read_line(FILE *fh_output, stack_t **head)
 {
 	char *line = NULL;
 	size_t bufsize = 0;
 	char **args;
-	unsigned int num, i;
-	instruction_t f_list[] = {
-		{"push", push},
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{NULL, NULL}
-	};
+	unsigned int l_count = 0;
 
 	while (getline(&line, &bufsize, fh_output) != -1)
 	{
-		args = parse_lines(line);
-		(args[1] == NULL) ? args[1] = "0" : args[1];
-		for (i = 0; f_list[i].opcode != NULL; i++)
+		if (status)
+			break;
+		if (*line == '\n')
 		{
-			if (strcmp(args[0], f_list[i].opcode) == 0)
-			{
-				num = atoi(args[1]);
-				f_list[i].f(head, num);
-			}
+			l_count++;
+			continue;
 		}
+		args = parse_lines(line);
+		global.c = args[1];
+		if (!args || args[0] == "#")
+		{
+			l_count++;
+			continue;
+		}
+		exec_line(head, args, l_count);
+		l_count++;
 	}
+	free(line);
+}*/
+void f_error(char *argv)
+{
+	fprintf(stderr, "Error: Can't open file %s\n", argv);
+	exit(EXIT_FAILURE);
 }
-
+void u_error(void)
+{
+	fprintf(stderr, "USAGE: monty file\n");
+	exit(EXIT_FAILURE);
+}
 int main(int argc, char **argv)
 {
 	FILE *fh_output;
 	stack_t *head = NULL;
 
-	(void)argc;
+	if (argc != 2)
+		u_error();
 	fh_output = fopen(argv[1], "r");
+	if (!fh_output)
+		f_error(argv[1]);
 	read_line(fh_output, &head);
 
 	fclose(fh_output);
-	return (0);
+	exit(EXIT_SUCCESS);
 }
-
-
 

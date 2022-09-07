@@ -17,7 +17,7 @@ char **parse_lines(char *line)
 		fprintf(stderr, "lsh:kjljldkjljds\n");
 		exit(EXIT_FAILURE);
 	}
-	token = strtok(line, " ");
+	token = strtok(line, " \n");
 	while (token != NULL)
 	{
 		tokens[position] = token;

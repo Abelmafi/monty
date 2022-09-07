@@ -3,7 +3,21 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stddef.h>
 #include <string.h>
+
+#define INSTRUCTIONS	\
+	{		\
+		{"push", push},	\
+		{"pall", pall},	\
+		{"pint", pint},	\
+		{"pop", pop},	\
+		{"swap", swap},	\
+		{"add", add},	\
+		{		\
+			NULL, NULL	\
+		}	\
+	}	
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -15,9 +29,9 @@
  */
 typedef struct stack_s
 {
-	int n;
-	struct stack_s *prev;
-	struct stack_s *next;
+        int n;
+        struct stack_s *prev;
+        struct stack_s *next;
 } stack_t;
 
 /**
@@ -34,13 +48,15 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+typedef struct data
+{
+	char *c;
+} data_s;
 
-void read_line(FILE *fh_output, stack_t **head);
-char **parse_lines(char *line);
-void pint(stack_t **head, unsigned int n);
-void read_line(FILE *fh_output, stack_t **head);
-void pall(stack_t **head, unsigned int line_number);
-void push(stack_t **head, unsigned int line_number);
-void read_line(FILE *fh_output, stack_t **head);
+data_s global;
 
+void exec_line(stack_t **head, char **args, unsigned int l_count);
+void read_line(FILE *fh_output, stack_t **head);
+void push(stack_t **head, unsigned int l_count);
+void pall(stack_t **head, unsigned int l_count);
 #endif
