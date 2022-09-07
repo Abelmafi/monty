@@ -65,7 +65,7 @@ void exec_line(stack_t **head, char *args, unsigned int l_count);
 void read_line(FILE *fh_output, stack_t **head);
 
 void free_stack(stack_t *head);
-extern int add_node(stack_t **head, int num);
+extern stack_t *add_node(stack_t **head, int num);
 
 void f_error(char *argv);
 void u_error(void);

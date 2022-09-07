@@ -6,7 +6,7 @@
  *
  * Return: 0 on failure and 1 on success.
  */
-int add_node(stack_t **head, int num)
+stack_t *add_node(stack_t **head, int num)
 {
 	stack_t *new;
 
@@ -15,7 +15,7 @@ int add_node(stack_t **head, int num)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free(new);
-		return (0);
+		return (NULL);
 	}
 	new->n = num;
 	new->next = *head;
@@ -23,7 +23,7 @@ int add_node(stack_t **head, int num)
 	if (*head != NULL)
 		(*head)->prev = new;
 	*head = new;
-	return (1);
+	return (new);
 }
 /**
  * free_stack - frees a dlistint_t linked list

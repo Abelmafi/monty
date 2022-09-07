@@ -11,7 +11,7 @@ void read_line(FILE *fh_output, stack_t **head)
 {
 	char *line = NULL;
 	size_t bufsize = 0;
-	char *args;
+	char *args = NULL;
 	unsigned int l_count = 0;
 
 	while (getline(&line, &bufsize, fh_output) != -1)
