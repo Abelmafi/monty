@@ -5,10 +5,11 @@
  * @l_count: line count.
  * Return: always nothng.
  */
-void rotr(stack_t **head, unsigned int l_count __attribute__((unused)))
+void rotr(stack_t **head, unsigned int l_count)
 {
 	stack_t *bottom;
 	stack_t *last;
+	(void)l_count;
 
 	if (!head || !*head || !(*head)->next)
 		return;
