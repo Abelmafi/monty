@@ -31,15 +31,12 @@ int is_digit(char *str)
 void push(stack_t **head, unsigned int l_count)
 {
 	char *s = global.c;
-	int num = atoi(s);
 
-	if (is_digit(s) == 0)
+	if ((is_digit(s)) == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", l_count);
 		exit(EXIT_FAILURE);
 	}
-	if (!add_node(head, num))
-	{
+	if (!add_node(head, atoi(s)))
 		exit(EXIT_FAILURE);
-	}
 }

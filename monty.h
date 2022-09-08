@@ -14,6 +14,11 @@
 		{"pop", pop},	\
 		{"swap", swap},	\
 		{"add", _add},	\
+		{"nop", nop},	\
+		{"pchar", pchar},	\
+		{"pstr", pstr},	\
+		{"rotl", rotl},	\
+		{"rotr", rotr},	\
 		{		\
 			NULL, NULL	\
 		}	\
@@ -71,7 +76,9 @@ void f_error(char *argv);
 void u_error(void);
 
 size_t _print(const stack_t *head);
+int is_digit(char *str);
 
+extern void rotl(stack_t **head, unsigned int l_count);
 extern void pall(stack_t **head, unsigned int l_count);
 extern void pint(stack_t **head, unsigned int l_count);
 extern void push(stack_t **head, unsigned int l_count);
@@ -79,4 +86,8 @@ extern void pall(stack_t **head, unsigned int l_count);
 extern void pop(stack_t **head, unsigned int l_count);
 extern void swap(stack_t **head, unsigned int l_count);
 extern void _add(stack_t **head, unsigned int l_count);
+extern void nop(stack_t **head, unsigned int l_count);
+extern void pchar(stack_t **head, unsigned int l_count);
+extern void pstr(stack_t **head, unsigned int l_count);
+extern void rotr(stack_t **head, unsigned int l_count);
 #endif

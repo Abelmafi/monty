@@ -7,18 +7,15 @@
  */
 void pop(stack_t **head, unsigned int l_count)
 {
-	stack_t *rmv;
+	stack_t *rmv = *head;
 
-	if (!head || !*head)
+	if (!head || !(*head))
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", l_count);
 		exit(EXIT_FAILURE);
 	}
-	rmv = *head;
-	*head = (*head)->next;
-	if (!*head)
-		return;
-	(*head)->prev = NULL;
-	rmv->next = NULL;
+	*head = rmv->next;
+	if (rmv->next)
+		rmv->next->prev = rmv->prev;
 	free(rmv);
 }

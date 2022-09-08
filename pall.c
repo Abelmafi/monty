@@ -7,13 +7,13 @@
  */
 size_t _print(const stack_t *head)
 {
-	const stack_t *current = head;
+	/*const stack_t *current = head;*/
 	size_t i = 0;
 
-	while (current)
+	while (head)
 	{
-		printf("%d\n", current->n);
-		current = current->next;
+		printf("%d\n", head->n);
+		head = head->next;
 		i++;
 	}
 	return (i);
