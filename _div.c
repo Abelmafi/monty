@@ -11,12 +11,12 @@ void _div(stack_t **head, unsigned int l_count)
 
 	if (!head || !*head || !((*head)->next))
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", l_count);
+		fprintf(stderr, "L%d: can't div, stack too short\n", l_count);
 		exit(EXIT_FAILURE);
 	}
 	if ((*head)->n == 0)
 	{
-		fprintf(stderr, "L%d: division by zero", l_count);
+		fprintf(stderr, "L%d: division by zero\n", l_count);
 		exit(EXIT_FAILURE);
 	}
 	*head = (*head)->next;

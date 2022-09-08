@@ -11,7 +11,7 @@ void _mul(stack_t **head, unsigned int l_count)
 
 	if (!head || !*head || !((*head)->next))
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", l_count);
+		fprintf(stderr, "L%d: can't mul, stack too short\n", l_count);
 		exit(EXIT_FAILURE);
 	}
 	*head = (*head)->next;
