@@ -10,7 +10,7 @@ void pint(stack_t **head, unsigned int l_count)
 {
 	if (!head || !(*head))
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty", l_count);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", l_count);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*head)->n);
