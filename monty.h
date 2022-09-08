@@ -19,6 +19,9 @@
 		{"pstr", pstr},	\
 		{"rotl", rotl},	\
 		{"rotr", rotr},	\
+		{"mul", _mul},	\
+		{"sub", _sub},	\
+		{"div", _div},	\
 		{		\
 			NULL, NULL	\
 		}	\
@@ -90,4 +93,7 @@ extern void nop(stack_t **head, unsigned int l_count);
 extern void pchar(stack_t **head, unsigned int l_count);
 extern void pstr(stack_t **head, unsigned int l_count);
 extern void rotr(stack_t **head, unsigned int l_count);
+extern void _sub(stack_t **head, unsigned int l_count);
+extern void _mul(stack_t **head, unsigned int l_count);
+extern void _div(stack_t **head, unsigned int l_count);
 #endif
