@@ -5,7 +5,7 @@
  * @l_count: line count.
  * Return: always nothing.
  */
-void pstr(stack_t **head, unsigned int l_count)
+void pstr(stack_t **head, unsigned int l_count __attribute__((unused)))
 {
 	stack_t *current = *head;
 
