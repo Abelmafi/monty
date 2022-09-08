@@ -11,7 +11,7 @@ void rotr(stack_t **head, unsigned int l_count)
 	stack_t *last;
 	(void)l_count;
 
-	if (!head || !*head || !(*head)->next)
+	if (!head || !*head || !((*head)->next))
 		return;
 	
 	bottom = *head;
