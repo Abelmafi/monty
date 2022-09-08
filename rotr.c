@@ -7,15 +7,15 @@
  */
 void rotr(stack_t **head, unsigned int l_count __attribute__((unused)))
 {
-	stack_t *tmp = *head, *swap = *head;
+	stack_t *temp = NULL, *swap = *head;
 
-	while (tmp)
+	while (swap)
 	{
-		tmp = tmp->next;
-		swap->next = swap->prev;
-		swap->prev = tmp;
-		if (tmp)
-			swap = tmp;
+		temp = swap->prev;
+		swap->prev = swap->next;
+		swap->next = temp;
+		swap = swap->prev;
 	}
-	*head = swap;
+	if (temp)
+		*head = temp->prev;
 }
