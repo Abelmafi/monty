@@ -16,6 +16,7 @@
 		{"add", _add},	\
 		{"nop", nop},	\
 		{"pchar", pchar},	\
+		{"pstr", pstr},	\
 		{		\
 			NULL, NULL	\
 		}	\
@@ -84,4 +85,5 @@ extern void swap(stack_t **head, unsigned int l_count);
 extern void _add(stack_t **head, unsigned int l_count);
 extern void nop(stack_t **head, unsigned int l_count);
 extern void pchar(stack_t **head, unsigned int l_count);
+extern void pstr(stack_t **head, unsigned int l_count);
 #endif
