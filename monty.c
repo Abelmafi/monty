@@ -1,6 +1,4 @@
 #include "monty.h"
-int status = 0;
-
 /**
  * main - an interpreter for Monty ByteCodes files.
  * @argc: argument vectors count
