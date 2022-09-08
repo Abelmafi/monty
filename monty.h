@@ -22,6 +22,7 @@
 		{"mul", _mul},	\
 		{"sub", _sub},	\
 		{"div", _div},	\
+		{"mod", _mod},	\
 		{		\
 			NULL, NULL	\
 		}	\
