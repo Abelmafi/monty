@@ -9,6 +9,8 @@ void rotr(stack_t **head, unsigned int l_count __attribute__((unused)))
 {
 	stack_t *temp = NULL, *swap = *head;
 
+	if (!head || !*head || (*head)->next)
+		return;
 	while (swap)
 	{
 		temp = swap->prev;
