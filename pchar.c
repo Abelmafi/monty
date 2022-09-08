@@ -27,7 +27,7 @@ void pchar(stack_t **head, unsigned int l_count)
 		exit(EXIT_FAILURE);
 	}
 	s = (*head)->n;
-	if (_isalpha(s) == 0 || s == '\0')
+	if (s < 0 || s > 127)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", l_count);
 		exit(EXIT_FAILURE);
