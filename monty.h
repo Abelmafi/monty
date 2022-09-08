@@ -80,4 +80,5 @@ extern void pall(stack_t **head, unsigned int l_count);
 extern void pop(stack_t **head, unsigned int l_count);
 extern void swap(stack_t **head, unsigned int l_count);
 extern void _add(stack_t **head, unsigned int l_count);
+extern void nop(stack_t **head, unsigned int l_count);
 #endif
