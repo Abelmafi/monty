@@ -7,14 +7,15 @@
  */
 void rotr(stack_t **head, unsigned int l_count __attribute__((unused)))
 {
-	stack_t *bottom, *last;
+	stack_t *bottom;
+	stack_t *last;
 
 	if (!head || !*head || !(*head)->next)
 		return;
+	
 	bottom = *head;
 	while (bottom->next)
 		bottom = bottom->next;
-
 	last = bottom->prev;
 	bottom->next = *head;
 	bottom->prev = NULL;
