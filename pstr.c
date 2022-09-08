@@ -8,12 +8,15 @@
  */
 void pstr(stack_t **head, unsigned int l_count __attribute__((unused)))
 {
-	while (*head)
+	stack *current;
+
+	current = *head;
+	while (current)
 	{
-		if ((*head)->n <= 0 || (*head)->n > 127)
+		if (current->n <= 0 || current->n > 127)
 			break;
-		putchar((char) (*head)->n);
-		*head = (*head)->next;
+		putchar((char) current->n);
+		current = current->next;
 	}
 	putchar('\n');
 }
