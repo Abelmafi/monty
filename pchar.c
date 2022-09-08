@@ -23,7 +23,7 @@ void pchar(stack_t **head, unsigned int l_count)
 
 	if (!head || !(*head))
 	{
-		fprintf(stderr, "L%d: can't pchar, stack empty", l_count);
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", l_count);
 		exit(EXIT_FAILURE);
 	}
 	s = (*head)->n;
