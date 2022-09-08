@@ -97,4 +97,5 @@ extern void rotr(stack_t **head, unsigned int l_count);
 extern void _sub(stack_t **head, unsigned int l_count);
 extern void _mul(stack_t **head, unsigned int l_count);
 extern void _div(stack_t **head, unsigned int l_count);
+extern void _mod(stack_t **head, unsigned int l_count);
 #endif
