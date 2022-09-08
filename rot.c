@@ -10,7 +10,7 @@ void rotl(stack_t **head, unsigned int l_count __attribute__((unused)))
 {
 	stack_t *current = *head, *tmp = *head;
 
-	if (head && *head)
+	if (head && *head && (*head)->next)
 	{
 		while (tmp->next)
 			tmp = tmp->next;
